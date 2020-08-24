@@ -1,11 +1,10 @@
-import './styles.scss';
+import '../assets/stylesheets/styles.scss';
 
-class Car {
-  manufacturer(car) {
-    document.write(`I have sosi a fucking ${car}`);
-  }
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App.jsx';
 
-}
-const bmw = new Car;
-
-bmw.manufacturer('bmw');
+ReactDOM.render(
+  <App />, 
+  document.getElementById('root'),
+);
