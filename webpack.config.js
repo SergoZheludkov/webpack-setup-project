@@ -1,9 +1,13 @@
 const webpack = require('webpack');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
+const config = {
   mode: 'development',
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
+    path: path.resolve(__dirname, './public'),
     filename: 'output.js',
   },
   module:{
@@ -15,8 +19,22 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/,
-        loader: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'styles.css',
+    }),
+  ],
+  devServer: {
+    contentBase: path.resolve(__dirname, './public'),
+    historyApiFallback: true,
+    inline: true,
+    open: true,
+  },
+  devtool: 'eval-source-map',
 };
+
+module.exports = config;

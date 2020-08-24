@@ -2,7 +2,7 @@ import './styles.scss';
 
 class Car {
   manufacturer(car) {
-    document.write(`I have a ${car}`);
+    document.write(`I have sosi a fucking ${car}`);
   }
 
 }
